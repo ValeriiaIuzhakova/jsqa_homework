@@ -1,0 +1,7 @@
+package-lock.json
+node_modules
+.idea
+.git
+.vscode
+.DS_Store
+jest.config.local.js

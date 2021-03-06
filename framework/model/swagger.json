@@ -1,0 +1,537 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "MTSimulatorLoginApi",
+      "version": "1.0"
+    },
+    "paths": {
+      "/api/v1/register": {
+        "post": {
+          "tags": [
+            "Login"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FullUserInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FullUserInfo"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FullUserInfo"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ApiUser"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ApiUser"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ApiUser"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BadRequest"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BadRequest"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BadRequest"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/token": {
+        "post": {
+          "tags": [
+            "Login"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ApiUser"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ApiUser"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ApiUser"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BadRequest"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BadRequest"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BadRequest"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/start": {
+        "get": {
+          "tags": [
+            "Main"
+          ],
+          "summary": "Cоздает сессию, начинает отсчет времени до закрытия сессии.",
+          "description": "В json : информация о примерах из бд\r\n\r\nurl для бэкграунда рандомный из интернета.\r\n\r\nSession ID - новый GUID, необходимый для окончания тренировки.",
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/FrontSessionResult"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/FrontSessionResult"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/FrontSessionResult"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/end": {
+        "post": {
+          "tags": [
+            "Main"
+          ],
+          "summary": "Завершает процесс прохождения тренировки, закрывает сессию, записывает в БД результаты тренировки.",
+          "description": "Если приходят id примеров, которые не открыты в сессии, они игнорируются, по отсутствующим id выставляется результат \"Не верно\"\r\n\r\nclient score считается по следующей занимательной логике:\r\n\r\n((Количество правильно отвеченых вопросов / Количество заданных вопросов)* Радиус Земли * Пи) / Потраченное время / (Количество дней с даты рождения до сейчас / 365)",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FrontSessionResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FrontSessionResult"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FrontSessionResult"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BackSessionResult"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BackSessionResult"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BackSessionResult"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BadRequest"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BadRequest"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BadRequest"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/report/all": {
+        "get": {
+          "tags": [
+            "Report"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ReportAllDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ReportAllDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ReportAllDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/report/Self": {
+        "get": {
+          "tags": [
+            "Report"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ReportSelfDto"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ReportSelfDto"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ReportSelfDto"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "FullUserInfo": {
+          "required": [
+            "login",
+            "password"
+          ],
+          "type": "object",
+          "properties": {
+            "login": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            },
+            "birth_date": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "nick": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "ApiUser": {
+          "required": [
+            "access_token",
+            "login",
+            "password"
+          ],
+          "type": "object",
+          "properties": {
+            "login": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            },
+            "birth_date": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "nick": {
+              "type": "string",
+              "nullable": true
+            },
+            "access_token": {
+              "type": "string"
+            },
+            "token_expire": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "user_id": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "additionalProperties": false
+        },
+        "BadRequest": {
+          "type": "object",
+          "properties": {
+            "error_text": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "User": {
+          "required": [
+            "login",
+            "password",
+            "otus"
+          ],
+          "type": "object",
+          "properties": {
+            "login": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "EquationResult": {
+          "required": [
+            "id",
+            "result",
+            "success"
+          ],
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "result": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "success": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "FrontSessionResult": {
+          "type": "object",
+          "properties": {
+            "session_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "equation_results": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/EquationResult"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "BackSessionResult": {
+          "type": "object",
+          "properties": {
+            "session_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "client_time": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "client_score": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "client_result_answers": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/EquationResult"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "ReportAllDto": {
+          "type": "object",
+          "properties": {
+            "Пользователь": {
+              "type": "string",
+              "nullable": true
+            },
+            "Счет последний": {
+              "type": "string",
+              "nullable": true
+            },
+            "Счет максимальный": {
+              "type": "string",
+              "nullable": true
+            },
+            "Счет средний за текущий месяц": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "ReportSelfDto": {
+          "type": "object",
+          "properties": {
+            "Дата": {
+              "type": "string",
+              "nullable": true
+            },
+            "Длительность прохождения": {
+              "type": "string",
+              "nullable": true
+            },
+            "Количество ответов": {
+              "type": "string",
+              "nullable": true
+            },
+            "Количество правильных ответов": {
+              "type": "string",
+              "nullable": true
+            },
+            "Всего вопросов": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "securitySchemes": {
+        "Bearer": {
+          "type": "http",
+          "description": "JWT Authorization header using the Bearer scheme.",
+          "scheme": "bearer"
+        }
+      }
+    },
+    "security": [
+      {
+        "Bearer": [ ]
+      }
+    ]
+  }
