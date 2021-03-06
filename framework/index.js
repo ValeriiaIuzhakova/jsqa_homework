@@ -1,8 +1,8 @@
 import { Registration, MailCheck } from './services/index';
 
 const apiProvider = () => ({
-    registration: () => new Registration(),
-    check: () => new MailCheck(),
+  registration: () => new Registration(),
+  check: () => new MailCheck(),
 });
 
-export { apiProvider }; 
+export { apiProvider };

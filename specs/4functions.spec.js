@@ -1,5 +1,5 @@
-import { kolobok, newYear } from '../src/homework/homework4';
 import { expect } from '@jest/globals';
+import { kolobok, newYear } from '../src/homework/homework4';
 
 /**
  * В src/homework4.js напишите функцию "Колобок" и тесты к ней здесь.
@@ -10,19 +10,19 @@ import { expect } from '@jest/globals';
  * В функции используйте конструкцию switch - https://learn.javascript.ru/switch
  */
 
- describe('колобок', () => {
-    it('колобок ушел от дедушки', () => {
-        expect(kolobok('дедушка')).toBe('Я от дедушки ушел');
-    });
+describe('колобок', () => {
+  it('колобок ушел от дедушки', () => {
+    expect(kolobok('дедушка')).toBe('Я от дедушки ушел');
+  });
 
-    it('колобок ушел от бабушки', () => {
-        expect(kolobok('бабушка')).toBe('Я от бабушки ушел');
-    });
+  it('колобок ушел от бабушки', () => {
+    expect(kolobok('бабушка')).toBe('Я от бабушки ушел');
+  });
 
-    it('колобок убежал от волка', () => {
-        expect(kolobok('волк')).toBe('И от тебя, волк, убегу');
-    });
- });
+  it('колобок убежал от волка', () => {
+    expect(kolobok('волк')).toBe('И от тебя, волк, убегу');
+  });
+});
 
 /**
  * В src/homework4.js напишите функцию "Новый год" и тесты к ней здесь.
@@ -32,11 +32,11 @@ import { expect } from '@jest/globals';
  */
 
 describe('новый год', () => {
-    it('снегурочка', () => {
-        expect(newYear('Снегурочка')).toBe('Снегурочка! Снегурочка! Снегурочка!');
-    });
+  it('снегурочка', () => {
+    expect(newYear('Снегурочка')).toBe('Снегурочка! Снегурочка! Снегурочка!');
+  });
 
-    it('дед мороз', () => {
-        expect(newYear('Дед Мороз')).toBe('Дед Мороз! Дед Мороз! Дед Мороз!');
-    });
+  it('дед мороз', () => {
+    expect(newYear('Дед Мороз')).toBe('Дед Мороз! Дед Мороз! Дед Мороз!');
+  });
 });

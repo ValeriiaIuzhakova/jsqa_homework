@@ -4,22 +4,22 @@
  * @returns {string}
  */
 function kolobok(name) {
-    let s;
+  let s;
 
-    switch(name) {
-        case 'дедушка':
-            s = 'Я от дедушки ушел';
-            break;
-        case 'бабушка':
-            s = 'Я от бабушки ушел';
-            break;
-        case 'волк':
-            s = 'И от тебя, волк, убегу';
-            break;
-    }
+  switch (name) {
+    case 'дедушка':
+      s = 'Я от дедушки ушел';
+      break;
+    case 'бабушка':
+      s = 'Я от бабушки ушел';
+      break;
+    case 'волк':
+      s = 'И от тебя, волк, убегу';
+      break;
+  }
 
-    return s;
-};
+  return s;
+}
 
 /**
  * newYear
@@ -27,7 +27,7 @@ function kolobok(name) {
  * @returns {string}
  */
 function newYear(name) {
-    return `${name}! `.repeat(3).trim();
-};
+  return `${name}! `.repeat(3).trim();
+}
 
 export { kolobok, newYear };
