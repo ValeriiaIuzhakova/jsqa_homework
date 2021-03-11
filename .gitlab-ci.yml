@@ -1,0 +1,17 @@
+stages:
+  - test
+
+QAA:
+  image: circleci/node:13
+  stage: test
+  before_script:
+    - npm install
+  script:
+    - npm test
+  after_script:
+    - sh .notify.sh
+  artifacts:
+    when: always
+    expire_in: 1 week
+    paths:
+      - jest-report
