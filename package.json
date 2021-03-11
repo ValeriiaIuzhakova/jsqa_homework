@@ -42,5 +42,8 @@
     "lint-staged": "^10.5.1",
     "node-fetch": "^2.6.1",
     "supertest": "^6.0.1"
+  },
+  "devDependencies": {
+    "jest-html-reporter": "^3.3.0"
   }
 }
